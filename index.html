@@ -1,0 +1,58 @@
+<html>
+
+<head>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejercicio 4 - Barra de progreso</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="card">
+    <h2>📊 Ejercicio 4: Barra de progreso animada</h2>
+
+    <div class="contenedor-barra">
+      <div id="progreso" class="barra"></div>
+    </div>
+
+    <button id="btnCargar" class="btn">Cargar</button>
+
+    <footer>Animaciones con JavaScript | Ejercicio 4</footer>
+  </div>
+
+  <script>
+    let porcentaje = 0;
+    let intervaloActivo = false;
+
+    function iniciarCarga() {
+      if (intervaloActivo) return; 
+
+      intervaloActivo = true;
+      porcentaje = 0;
+
+      let barra = document.getElementById("progreso");
+      barra.style.width = "0%";
+
+      let intervalo = setInterval(function() {
+
+        porcentaje++;
+        barra.style.width = porcentaje + "%";
+
+        console.log("Cargando... " + porcentaje + "%");
+
+        if (porcentaje >= 100) {
+          clearInterval(intervalo);
+          intervaloActivo = false;
+          console.log("✅ Carga completada");
+        }
+
+      }, 20); 
+    }
+
+    document.getElementById("btnCargar").onclick = iniciarCarga;
+
+    console.log("Script listo → Ejercicio 4");
+  </script>
+
+</body>
+</html>
